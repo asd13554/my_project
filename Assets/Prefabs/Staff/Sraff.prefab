@@ -1230,6 +1230,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cda45cbb49e3dd42b8282c68780314a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charSkin:
+  - {fileID: 1719133026623802}
+  - {fileID: 1974049927722618}
+  - {fileID: 1476073852342470}
+  - {fileID: 1723542237869448}
+  - {fileID: 1772410112290960}
+  - {fileID: 1920296411442848}
+  staffName: 
+  dailyWage: 0
 --- !u!1 &1703637963276046
 GameObject:
   m_ObjectHideFlags: 0
