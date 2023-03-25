@@ -6,16 +6,23 @@ public class GameManager : MonoBehaviour
 {
     public GameObject staffPrefab;
     public GameObject staffParent;
-    
+
+    public GameObject spawnPos;
+    public GameObject rallyPos;
+ 
     public static GameManager instance;
-    
+
+    // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         GenerateCandidate();
     }
+
+    // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void GenerateCandidate()
@@ -24,9 +31,11 @@ public class GameManager : MonoBehaviour
         {
             GameObject staffObj = Instantiate(staffPrefab, staffParent.transform);
             Staff s = staffObj.GetComponent<Staff>();
-            
+
             s.InitCharID(i);
             s.ChangeCharSkin();
+
+            s.SetToWalk(rallyPos.transform.position);
         }
     }
 }
