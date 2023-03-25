@@ -34,7 +34,7 @@ public class CameraController : MonoBehaviour
         else if (dist > maxZoomDist && zoomModifier < 0f)
             return;
         
-        cam.transform.position += cam.transform.forward * zoomModifier * zoomSpeed;
+        cam.transform.position += cam.transform.forward * (zoomModifier * zoomSpeed);
     }
 
     private void MoveByKB()
@@ -44,6 +44,6 @@ public class CameraController : MonoBehaviour
 
         Vector3 dir = transform.forward * zInput + transform.right * xInput;
 
-        transform.position += dir * moveSpeed * Time.deltaTime;
+        transform.position += dir * (moveSpeed * Time.deltaTime);
     }
 }
