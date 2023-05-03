@@ -9,7 +9,14 @@ public class GameManager : MonoBehaviour
 
     public GameObject spawnPos;
     public GameObject rallyPos;
- 
+
+    public int money;
+    public int staff;
+    public int wheat;
+    public int melon;
+    public int corn;
+    public int apple;
+
     public static GameManager instance;
 
     // Start is called before the first frame update
@@ -17,12 +24,14 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         GenerateCandidate();
+        money = 25000;
+        UI.instance.UpdateHeaderPanel();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void GenerateCandidate()

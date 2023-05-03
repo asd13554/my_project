@@ -1,25 +1,27 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 using UnityEngine.AI;
 
 public enum UnitState
 {
     Idle,
-    Walk
+    Walk,
+    Plow,
+    Sow,
+    Harvest,
+    Water
 }
 
 public class Staff : MonoBehaviour
 {
     private int _id;
-    public int ID { get { return _id; } set {_id = value;} }
+    public int ID { get { return _id; } set { _id = value; } }
 
     private int charSkinId;
-    public int CharSkinID { get { return charSkinId;} set { charSkinId = value; } }
+    public int CharSkinID { get { return charSkinId; } set { charSkinId = value; } }
     public GameObject[] charSkin;
-        
+
     public string staffName;
     public int dailyWage;
 
@@ -35,6 +37,7 @@ public class Staff : MonoBehaviour
     {
         navAgent = GetComponent<NavMeshAgent>();
     }
+
     void Update()
     {
         CheckStop();
@@ -47,21 +50,18 @@ public class Staff : MonoBehaviour
         staffName = "XXXX";
         dailyWage = Random.Range(80, 125);
     }
+
     public void ChangeCharSkin()
     {
         for (int i = 0; i < charSkin.Length; i++)
         {
             if (i == charSkinId)
-            {
                 charSkin[i].SetActive(true);
-            }
             else
-            {
                 charSkin[i].SetActive(false);
-            }
         }
     }
-    
+
     public void SetToWalk(Vector3 dest)
     {
         state = UnitState.Walk;
@@ -73,6 +73,7 @@ public class Staff : MonoBehaviour
     private void CheckStop()
     {
         float dist = Vector3.Distance(transform.position, navAgent.destination);
+
         if (dist <= 3f)
         {
             state = UnitState.Idle;
